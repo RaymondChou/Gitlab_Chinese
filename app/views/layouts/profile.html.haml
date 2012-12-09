@@ -8,15 +8,15 @@
       %ul.main_menu
         = nav_link(path: 'profiles#show', html_options: {class: 'home'}) do
           = link_to "个人资料", profile_path
-        = nav_link(path: 'profiles#account') do
-          = link_to "账户", account_profile_path
+        = nav_link(controller: :profile, action: :account) do
+          = link_to "账户", profile_account_path
         = nav_link(controller: :keys) do
           = link_to keys_path do
             SSH 密钥
             %span.count= current_user.keys.count
-        = nav_link(path: 'profiles#design') do
-          = link_to "主题", design_profile_path
-        = nav_link(path: 'profiles#history') do
-          = link_to "历史", history_profile_path
+        = nav_link(controller: :profile, action: :design) do
+          = link_to "主题", profile_design_path
+        = nav_link(controller: :profile, action: :history) do
+          = link_to "历史", profile_history_path
 
       .content= yield

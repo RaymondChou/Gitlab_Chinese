@@ -146,6 +146,6 @@ class Notify < ActionMailer::Base
   #   >> subject('Lorem ipsum', 'Dolor sit amet')
   #   => "GitLab | Lorem ipsum | Dolor sit amet"
   def subject(*extra)
-    "GitLab | " << extra.join(' | ') << (@project ? " | #{@project.name}" : "")
+    "GitL | " << extra.join(' | ') << (@project ? " | #{@project.name}" : "")
   end
 end
