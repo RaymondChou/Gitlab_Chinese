@@ -1,0 +1,74 @@
+= form_for(@project, remote: true) do |f|
+  - if @project.errors.any?
+    .alert-message.block-message.error
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+  .clearfix.project_name_holder
+    = f.label :name do
+      Project name is
+    .input
+      = f.text_field :name, placeholder: "Example Project", class: "xxlarge"
+  %fieldset
+    %legend  Advanced settings:
+    .control-group
+      = f.label :path do
+        Repository
+      .controls
+        = text_field_tag :ppath, @project.path_to_repo, class: "xxlarge", readonly: true
+
+    .control-group
+      = f.label :namespace_id do
+        %span Namespace
+      .controls
+        - if can? current_user, :change_namespace, @project
+          = f.select :namespace_id, namespaces_options(@project.namespace_id), {prompt: 'Choose a project namespace'}, {class: 'chosen'}
+          &nbsp;
+          %span.cred Be careful. Changing project namespace can have unintended side effects
+        - else
+          %a.btn.disabled= @project.namespace.try(:human_name) || "/"
+          &nbsp;
+          %span.cred Only owner can change project namespace.
+
+
+    - unless @project.heads.empty?
+      .clearfix
+        = f.label :default_branch, "Default Branch"
+        .input= f.select(:default_branch, @project.heads.map(&:name), {}, style: "width:210px;")
+
+  %fieldset.features
+    %legend Features:
+
+    .control-group
+      = f.label :issues_enabled, "Issues", class: 'control-label'
+      .controls
+        = f.check_box :issues_enabled
+        %span.descr Lightweight issue tracking system for this project
+
+    .control-group
+      = f.label :merge_requests_enabled, "Merge Requests", class: 'control-label'
+      .controls
+        = f.check_box :merge_requests_enabled
+        %span.descr Submit changes to be merged upstream.
+
+    .control-group
+      = f.label :wall_enabled, "Wall", class: 'control-label'
+      .controls
+        = f.check_box :wall_enabled
+        %span.descr Simple chat system for broadcasting inside project
+
+    .control-group
+      = f.label :wiki_enabled, "Wiki", class: 'control-label'
+      .controls
+        = f.check_box :wiki_enabled
+        %span.descr Pages for project documentation
+
+  %br
+
+  .actions
+    = f.submit 'Save', class: "btn save-btn"
+    = link_to 'Cancel', @project, class: "btn"
+    - unless @project.new_record?
+      - if can?(current_user, :remove_project, @project)
+        .right
+          = link_to 'Remove', @project, confirm: 'Removed project can not be restored! Are you sure?', method: :delete, class: "btn danger"

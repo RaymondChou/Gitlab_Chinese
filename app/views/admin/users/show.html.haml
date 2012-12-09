@@ -1,0 +1,107 @@
+%h3.page_title
+  User: #{@admin_user.name}
+  - if @admin_user.blocked
+    %small Blocked
+  - if @admin_user.admin
+    %small Administrator
+  = link_to edit_admin_user_path(@admin_user), class: "btn right" do
+    %i.icon-edit
+    Edit
+
+%br
+
+%table.zebra-striped
+  %thead
+    %tr
+      %th Profile
+      %th
+  %tr
+    %td
+      %b
+        Email:
+    %td
+      = @admin_user.email
+  %tr
+    %td
+      %b
+        Username:
+    %td
+      = @admin_user.username
+  %tr
+    %td
+      %b
+        Admin:
+        %td= check_box_tag "admin", 1, @admin_user.admin, disabled: :disabled
+  %tr
+    %td
+      %b
+        Blocked:
+        %td= check_box_tag "blocked", 1, @admin_user.blocked, disabled: :disabled
+  %tr
+    %td
+      %b
+        Projects limit:
+    %td
+      = @admin_user.projects_limit
+  - unless @admin_user.skype.empty?
+    %tr
+      %td
+        %b
+          Skype:
+      %td
+        = @admin_user.skype
+  - unless @admin_user.linkedin.empty?
+    %tr
+      %td
+        %b
+          Linkedin:
+      %td
+        = @admin_user.linkedin
+  - unless @admin_user.twitter.empty?
+    %tr
+      %td
+        %b
+          Twitter:
+      %td
+        = @admin_user.twitter
+
+%br
+%h3 Add User to Projects
+%br
+= form_tag team_update_admin_user_path(@admin_user), class: "bulk_import", method: :put  do
+  %table
+    %thead
+      %tr
+        %th Projects
+        %th Project Access:
+
+    %tr
+      %td= select_tag :project_ids, options_from_collection_for_select(@projects , :id, :name_with_namespace),  multiple: true, data: {placeholder: 'Select projects'}, class: 'chosen span5'
+      %td= select_tag :project_access, options_for_select(Project.access_options), class: "project-access-select chosen span3"
+
+    %tr
+      %td= submit_tag 'Add', class: "btn primary"
+      %td
+        Read more about project permissions
+        %strong= link_to "here", help_permissions_path, class: "vlink"
+%br
+
+- if @admin_user.projects.present?
+  %h3 Projects
+  %br
+
+  %table.zebra-striped
+    %thead
+      %tr
+        %th Name
+        %th Project Access
+        %th
+        %th
+
+    - @admin_user.users_projects.each do |tm|
+      - project = tm.project
+      %tr
+        %td= link_to project.name_with_namespace, admin_project_path(project)
+        %td= tm.project_access_human
+        %td= link_to 'Edit Access', edit_admin_team_member_path(tm), class: "btn small"
+        %td= link_to 'Remove from team', admin_team_member_path(tm), confirm: 'Are you sure?', method: :delete, class: "btn small danger"

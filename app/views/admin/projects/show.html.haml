@@ -1,0 +1,95 @@
+%h3.page_title
+  Project: #{@project.name_with_namespace}
+  = link_to edit_admin_project_path(@project), class: "btn right" do
+    %i.icon-edit
+    Edit
+
+- if !@project.has_post_receive_file? && @project.has_commits?
+  %br
+  .alert.alert-error
+    %span
+      %strong Important!
+      Project has commits but missing post-receive file.
+      %br
+      If you exported project manually - copy post-receive hook to bare repository
+
+%br
+%table.zebra-striped
+  %thead
+    %tr
+      %th Project
+      %th
+  %tr
+    %td
+      %b
+        Name:
+    %td
+      = @project.name
+  %tr
+    %td
+      %b
+        Namespace:
+    %td
+      - if @project.namespace
+        = @project.namespace.human_name
+      - else
+        Global
+  %tr
+    %td
+      %b
+        Path:
+    %td
+      %code= @project.path_to_repo
+  %tr
+    %td
+      %b
+        Created by:
+    %td
+      = @project.owner_name || '(deleted)'
+  %tr
+    %td
+      %b
+        Post Receive File:
+    %td
+      = check_box_tag :post_receive_file, 1, @project.has_post_receive_file?, disabled: true
+%br
+%h3
+  Team
+  %small
+    (#{@project.users_projects.count})
+%br
+%table.zebra-striped
+  %thead
+    %tr
+      %th Name
+      %th Project Access
+      %th Repository Access
+      %th
+
+  - @project.users_projects.each do |tm|
+    %tr
+      %td
+        = link_to tm.user_name, admin_user_path(tm.user)
+      %td= tm.project_access_human
+      %td= link_to 'Edit Access', edit_admin_team_member_path(tm), class: "btn small"
+      %td= link_to 'Remove from team', admin_team_member_path(tm), confirm: 'Are you sure?', method: :delete, class: "btn danger small"
+
+%br
+%h3 Add new team member
+%br
+= form_tag team_update_admin_project_path(@project), class: "bulk_import", method: :put  do
+  %table.zebra-striped
+    %thead
+      %tr
+        %th Users
+        %th Project Access:
+
+    %tr
+      %td= select_tag :user_ids, options_from_collection_for_select(@users , :id, :name), multiple: true, data: {placeholder: 'Select users'}, class: 'chosen span5'
+      %td= select_tag :project_access, options_for_select(Project.access_options), {class: "project-access-select chosen span3"}
+
+    %tr
+      %td= submit_tag 'Add', class: "btn primary"
+      %td
+        Read more about project permissions
+        %strong= link_to "here", help_permissions_path, class: "vlink"

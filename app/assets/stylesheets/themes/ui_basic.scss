@@ -1,0 +1,36 @@
+/**
+ * This file represent some UI that can be changed
+ * during web app restyle or theme select.
+ *
+ */
+.ui_basic {
+  /*
+   * Common styles
+   *
+   */
+  a {
+    color: $link_color;
+    &:hover {
+      text-decoration: none;
+      color: $primary_color;
+    }
+  }
+
+  .app_logo {
+    .separator {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .separator {
+    float: left;
+    height: 60px;
+    width: 1px;
+    background: white;
+    border-left: 1px solid #DDD;
+    margin-top: -10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

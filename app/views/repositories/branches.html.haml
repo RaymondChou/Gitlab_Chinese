@@ -1,0 +1,12 @@
+= render "repositories/branches_head"
+- unless @branches.empty?
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Last commit
+        %th
+
+    %tbody
+      - @branches.each do |branch|
+        = render "repositories/branch", branch: branch

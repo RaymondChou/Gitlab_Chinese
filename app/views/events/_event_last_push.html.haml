@@ -1,0 +1,15 @@
+- if show_last_push_widget?(event)
+  .event_lp
+    = image_tag "event_push.png"
+    &nbsp;
+    %span You pushed to
+    = link_to project_commits_path(event.project, event.ref_name) do
+      %strong= truncate(event.ref_name, length: 28)
+    at
+    %strong= link_to event.project.name, event.project
+    %span
+      = time_ago_in_words(event.created_at)
+      ago.
+
+    = link_to new_mr_path_from_push_event(event), title: "New Merge Request", class: "btn btn-new-mr" do
+      Create Merge Request

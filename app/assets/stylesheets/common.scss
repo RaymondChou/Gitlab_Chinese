@@ -1,0 +1,694 @@
+/** LAYOUT **/
+
+body {
+  margin-bottom: 20px;
+}
+
+.container {
+  padding-top: 0;
+  z-index: 5;
+}
+
+.container .content {
+  margin: 0 0;
+}
+
+.container  .sidebar {
+  width: 200px;
+  height: 100%;
+  min-height: 450px;
+  float: right;
+}
+
+
+.visible_link,
+.author_link {
+  color: $link_color;
+}
+
+.help li { color:#111 }
+
+.back_link {
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 0;
+  padding-bottom: 0;
+}
+
+.info_link {
+  margin-right: 5px;
+  float: left;
+
+  img {
+    width: 20px;
+  }
+}
+
+.download_repo_link {
+  background: url("images.png") no-repeat 0 -48px;
+  padding-left: 20px;
+}
+
+table a code {
+  position: relative;
+  top: -2px;
+  margin-right: 3px;
+}
+
+.span12 hr{
+ margin-top: 5px;
+}
+
+.loading {
+  margin: 20px auto;
+  background: url(ajax_loader.gif) no-repeat center center;
+  width: 40px;
+  height: 40px;
+}
+
+/** FLASH message **/
+#flash-container {
+  height: 50px;
+  position: fixed;
+  z-index: 10001;
+  top: 0px;
+  width: 100%;
+  margin-bottom: 15px;
+  overflow: hidden;
+  background: white;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  display: none;
+
+  h4 {
+    color: #666;
+    font-size: 18px;
+    line-height: 38px;
+    padding-top: 5px;
+    margin: 2px;
+    font-weight: normal;
+  }
+}
+
+.git_url_wrapper {
+  margin-right:50px
+}
+
+.handle:hover {
+  cursor: move;
+}
+
+span.update-author {
+  display: block;
+}
+span.update-author {
+  color: #999;
+  font-weight: normal;
+  font-style: italic;
+}
+span.update-author strong {
+  font-weight: bold;
+  font-style: normal;
+}
+
+/** UPDATE ITEM **/
+span.update-author {
+  display: block;
+}
+/** END UPDATE ITEM **/
+.dashboard-loader {
+  float: left;
+  margin: 10px;
+  display: none;
+}
+.user-mention {
+  color: #2FA0BB;
+  font-weight: bold;
+}
+
+.neib {
+  margin-right: 10px;
+}
+
+.label {
+  background-color: #474D57;
+
+  &.label-tag {
+    background: none;
+    border: none;
+    padding: 4px 6px;
+    color: #444;
+    text-shadow: 0 0 1px #fff;
+
+    &.grouped {
+      float: left;
+      margin-right: 6px;
+      padding: 6px;
+    }
+  }
+  &.label-issue {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    color: #444;
+    text-shadow: 0 0 1px #fff;
+
+    &.grouped {
+      float: left;
+      margin-right: 6px;
+      padding: 6px;
+    }
+  }
+
+  &.label-success {
+    background-color: #8D8;
+    color: #333;
+    text-shadow: 0 1px 1px white;
+  }
+
+  &.label-error {
+    background-color: #D88;
+    color: #333;
+    text-shadow: 0 1px 1px white;
+  }
+}
+
+form {
+  @extend .form-horizontal;
+
+  .actions {
+    @extend .form-actions;
+  }
+
+  .clearfix {
+    @extend .control-group;
+  }
+
+  .input {
+    @extend .controls;
+  }
+
+  label {
+    @extend .control-label;
+  }
+  .xlarge {
+    @extend .input-xlarge;
+  }
+  .xxlarge {
+    @extend .input-xxlarge;
+  }
+}
+
+
+.field_with_errors {
+  display: inline;
+}
+
+ul.breadcrumb {
+  background: white;
+  border: none;
+  li {
+    display: inline;
+    text-shadow: 0 1px 0 white
+  }
+
+  a {
+    color: #474D57;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .arrow {
+    background: url("images.png") no-repeat -85px -77px;
+    width: 19px;
+    height: 16px;
+    float: left;
+    position: relative;
+    left: -10px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+input[type=text] {
+  &.large_text {
+    padding: 6px;
+    font-size: 16px;
+  }
+}
+
+input.git_clone_url {
+  width: 325px;
+}
+
+.merge-request-form-holder {
+  select {
+    width: 300px;
+  }
+}
+
+/** Issues **/
+#issue_assignee_id {
+  width: 300px;
+}
+
+#new_issue_dialog textarea{
+    height: 100px;
+}
+
+.project_list_url {
+  width: 250px;
+  background:#fff !important;
+}
+
+
+/** bordered list **/
+ul.bordered-list {
+  margin: 5px 0px;
+  padding: 0px;
+  li {
+    padding: 5px 0;
+    border-bottom: 1px solid #EEE;
+    overflow: hidden;
+    display: block;
+    margin: 0px;
+  }
+}
+
+ul.bordered-list li:last-child { border:none }
+
+.line_holder {
+  &:hover {
+    td {
+      background: #FFFFCF !important;
+    }
+  }
+}
+
+li.commit {
+  .avatar {
+    width: 24px;
+    top:-5px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  code {
+    padding: 2px 2px 0;
+    margin-top: -2px;
+    &:hover {
+      color: black;
+      border: 1px solid #ccc;
+    }
+  }
+}
+p.time {
+  color: #999;
+  font-size: 90%;
+  margin: 30px 3px 3px 2px;
+}
+
+
+.styled_image {
+  border: 2px solid #ddd;
+}
+
+
+.ico {
+  background: url("images.png") no-repeat -85px -77px;
+  width: 19px;
+  height: 16px;
+  float: left;
+  position: relative;
+  margin-right: 10px;
+  top: 8px;
+
+  &.project {
+    background-position:  -37px -77px;
+  }
+
+  &.activities {
+    background-position:-162px -22px;
+  }
+  &.projects {
+    background-position:-209px -21px;
+  }
+}
+
+.leftbar {
+  h5, .title {
+    padding: 5px 10px;
+  }
+
+  h4 {
+    font-size: 14px;
+    padding: 2px 10px;
+    color: #666;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  a:last-child h4 { border: none; }
+
+  a:hover {
+    h4 {
+      color: #111;
+      background: $hover;
+      border-color: #CCC;
+      .ico.project {
+        background-position:-209px -21px;
+      }
+    }
+  }
+  .bottom {
+    padding: 10px;
+  }
+}
+
+.votes {
+  font-size: 13px;
+  line-height: 15px;
+  .progress {
+    height: 4px;
+    margin: 0;
+    .bar {
+      float: left;
+      height: 100%;
+    }
+    .bar-success {
+      @include linear-gradient(#62C462, #51A351);
+      background-color: #468847;
+    }
+    .bar-danger {
+      @include linear-gradient(#EE5F5B, #BD362F);
+      background-color: #B94A48;
+    }
+  }
+  .upvotes {
+    display: inline-block;
+    color: #468847;
+  }
+  .downvotes {
+    display: inline-block;
+    color: #B94A48;
+  }
+}
+.votes-block {
+  margin: 14px 6px 6px 0;
+  .downvotes {
+    float: right;
+  }
+}
+.votes-inline {
+  display: inline-block;
+  margin: 0 8px;
+  .progress {
+    display: inline-block;
+    padding: 0 0 2px;
+    width: 45px;
+  }
+}
+
+/* Fix for readme code (stopped it from being yellow) */
+.readme {
+  pre {
+    background: white !important;
+
+    code {
+      background: none !important;
+    }
+  }
+}
+
+
+.highlight_word {
+  background: #EEDC94;
+}
+
+.status_info {
+  font-size: 14px;
+  padding: 5px 15px;
+  line-height: 24px;
+  width: 60px;
+  text-align: center;
+  float: left;
+  margin-right: 20px;
+
+  &.success {
+    background: #5BB75B;
+    color: white;
+    text-shadow: 0 1px #111;
+    border-color: #9A9;
+  }
+  &.error {
+    background: #DA4E49;
+    border-color: #BD362F;
+    color: white;
+    text-shadow: 0 1px #111;
+  }
+}
+
+.arrow{
+  background: #E3E5EA;
+  padding: 5px;
+  margin-top: 5px;
+  @include border-radius(5px);
+  text-shadow: none;
+  color: #999;
+  line-height: 16px;
+  font-weight: bold;
+}
+
+.thin_area{
+  height: 150px;
+}
+
+.gitlab_pagination {
+  span a { color: $link_color; }
+  .prev, .next, .current, .page a {
+    padding: 10px;
+  }
+  .current {
+    border-bottom: 2px solid $style_color;
+  }
+}
+
+// Fixes alignment on notes.
+.new_note {
+  label {
+    text-align: left;
+  }
+}
+
+// Fix issue with notes & lists creating a bunch of bottom borders.
+li.note {
+  img { max-width:100% }
+  .note-title {
+    li {
+      border-bottom:none !important;
+    }
+    .file {
+      padding-left: 20px;
+      background:url("icon-attachment.png") no-repeat left center;
+    }
+  }
+}
+
+.markdown {
+  img {
+    max-width: 100%;
+  }
+}
+
+.wiki_content code, .readme code{
+  background-color: inherit;
+}
+
+.team_member_show {
+  td:first-child {
+    color: #aaa;
+  }
+}
+
+.remember_me {
+  text-align: left;
+
+  input {
+    margin: 0;
+  }
+
+  span {
+    padding-left: 5px;
+  }
+}
+
+
+
+/**
+ * Admin area
+ *
+ */
+.admin_dash {
+  .data {
+    a {
+      h1 {
+        line-height: 48px;
+        font-size: 48px;
+        padding: 20px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.rss-icon {
+  img {
+    width: 24px;
+    vertical-align: top;
+  }
+
+  strong {
+    line-height: 24px;
+  }
+}
+
+
+
+/* CHZN reset few styles */
+.chzn-container-single .chzn-single {
+  background: #FFF;
+  border: 1px solid #bbb;
+  box-shadow: none;
+}
+.chzn-container-active .chzn-single {
+  background: #fff;
+}
+
+
+.supp_diff_link,
+.mr_show_all_commits {
+  cursor: pointer;
+}
+
+.merge_request,
+.issue {
+  &.today{
+    background: #EFE;
+    border-color: #CEC;
+  }
+  &.closed {
+    background: #F5f5f5;
+    border-color: #E5E5E5;
+  }
+  &.merged {
+    background: #F5f5f5;
+    border-color: #E5E5E5;
+  }
+}
+
+.git_error_tips {
+  @extend .span6;
+  text-align: left;
+  margin-top: 40px;
+  pre {
+    background: white;
+    border: none;
+    font-size: 12px;
+  }
+}
+
+.error_message {
+  @extend .cred;
+  border-left: 4px solid #E99;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #FEE;
+  padding-left: 20px;
+
+  &.centered {
+    text-align: center;
+  }
+}
+
+.oauth_select_holder {
+  padding: 20px;
+  img {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  .active {
+    img {
+      border: 1px solid #ccc;
+      background: $hover;
+      @include border-radius(5px);
+    }
+  }
+}
+
+.btn-build-token {
+  float: left;
+  padding: 6px 20px;
+  margin-right: 12px;
+}
+
+.gitlab-promo {
+  a {
+    color: #aaa;
+    margin-right: 30px;
+  }
+}
+
+pre {
+  &.clean {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.milestone .progress {
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+
+.float-link {
+  float: left;
+  margin-right: 15px;
+  .s16 {
+    margin-right: 5px;
+  }
+}
+
+.dashboard-search-filter {
+  padding:5px;
+
+  .search-text-input {
+    float:left;
+    @extend .span2;
+  }
+  .btn {
+    margin-left: 5px;
+    float:left;
+  }
+}
+
+h1.http_status_code {
+  font-size: 56px;
+  line-height: 100px;
+  font-weight: normal;
+  color: #456;
+}
+
+.control-group {
+  .controls {
+    span {
+      &.descr {
+        position: relative;
+        top: 2px;
+        left: 5px;
+        color: #666;
+      }
+    }
+  }
+}

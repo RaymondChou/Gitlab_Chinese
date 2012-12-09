@@ -1,0 +1,39 @@
+%h3.page_title
+  GITLAB
+  .right
+    %span= Gitlab::Version
+    %small= Gitlab::Revision
+%hr
+%p.lead
+  Self Hosted Git Management
+  %br
+  Fast, secure and stable solution based on Ruby on Rails & Gitolite.
+
+%hr
+
+%h3 Help
+
+%ol
+  %li
+    %h5= link_to "Workflow", help_workflow_path
+
+  %li
+    %h5= link_to "Permissions", help_permissions_path
+
+  %li
+    %h5= link_to "Web Hooks", help_web_hooks_path
+
+  %li
+    %h5= link_to "System Hooks", help_system_hooks_path
+
+  %li
+    %h5= link_to "API", help_api_path
+
+  %li
+    %h5= link_to "GitLab Markdown", help_markdown_path
+
+  %li
+    %h5= link_to "SSH keys", help_ssh_path
+
+  %li
+    %h5= link_to "GitLab Rake Tasks", help_raketasks_path

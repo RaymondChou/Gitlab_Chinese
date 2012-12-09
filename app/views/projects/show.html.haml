@@ -1,0 +1,8 @@
+= render "project_head"
+= render 'clone_panel'
+= render "events/event_last_push", event: @last_push
+.content_list= render @events
+.loading.hide
+
+:javascript
+  $(function(){ Pager.init(20); });
