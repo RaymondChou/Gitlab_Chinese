@@ -2,21 +2,21 @@
   .navbar-inner
     .container
       %div.app_logo
-        = link_to root_path, class: "home", title: "Home" do
-          %h1 GITLAB
+        = link_to root_path, class: "home", title: "首页" do
+          %h1 GITL
         %span.separator
       %h1.project_name= title
       %ul.nav
         - if current_user.is_admin?
           %li
-            = link_to admin_root_path, title: "Admin area", class: 'has_bottom_tooltip', 'data-original-title' => 'Admin area' do
+            = link_to admin_root_path, title: "管理员", class: 'has_bottom_tooltip', 'data-original-title' => '管理员' do
               %i.icon-cogs
         - if current_user.can_create_project?
           %li
-            = link_to new_project_path, title: "Create New Project", class: 'has_bottom_tooltip', 'data-original-title' => 'New project'  do
+            = link_to new_project_path, title: "新建项目", class: 'has_bottom_tooltip', 'data-original-title' => '新建项目'  do
               %i.icon-plus
         %li
-          = link_to profile_path, title: "Your Profile", class: 'has_bottom_tooltip', 'data-original-title' => 'Your profile'  do
+          = link_to profile_path, title: "个人资料", class: 'has_bottom_tooltip', 'data-original-title' => '个人资料'  do
             %i.icon-user
         %li.separator
         %li
@@ -28,10 +28,10 @@
             .account-links
               = link_to profile_path, class: "username" do
                 %i.icon-user.icon-white
-                My profile
+                个人资料
               = link_to destroy_user_session_path, class: "logout", method: :delete do
                 %i.icon-signout.icon-white
-                Logout
+                退出
 
 
 = render "layouts/init_auto_complete"

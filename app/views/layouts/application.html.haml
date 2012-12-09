@@ -1,24 +1,24 @@
 !!! 5
 %html{ lang: "en"}
-  = render "layouts/head", title: "Dashboard"
+  = render "layouts/head", title: "控制台"
   %body{class: "#{app_theme} application"}
     = render "layouts/flash"
-    = render "layouts/head_panel", title: "Dashboard"
+    = render "layouts/head_panel", title: "控制台"
     .container
       %ul.main_menu
         = nav_link(path: 'dashboard#index', html_options: {class: 'home'}) do
-          = link_to "Home", root_path, title: "Home"
+          = link_to "首页", root_path, title: "首页"
         = nav_link(path: 'dashboard#issues') do
           = link_to dashboard_issues_path do
-            Issues
+            问题反馈
             %span.count= current_user.assigned_issues.opened.count
         = nav_link(path: 'dashboard#merge_requests') do
           = link_to dashboard_merge_requests_path do
-            Merge Requests
+            合并请求
             %span.count= current_user.cared_merge_requests.count
         = nav_link(path: 'search#show') do
-          = link_to "Search", search_path
+          = link_to "搜索", search_path
         = nav_link(path: 'help#index') do
-          = link_to "Help", help_path
+          = link_to "帮助", help_path
 
       .content= yield

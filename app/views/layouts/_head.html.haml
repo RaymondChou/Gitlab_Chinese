@@ -1,17 +1,17 @@
 %head
   %meta{charset: "utf-8"}
   %title
-    GitLab
+    GitL
     = " > #{title}" if defined?(title)
   = favicon_link_tag 'favicon.ico'
   = stylesheet_link_tag    "application"
   = javascript_include_tag "application"
   -# Atom feed
   - if controller_name == 'projects' && action_name == 'index'
-    = auto_discovery_link_tag :atom, projects_url(:atom, private_token: current_user.private_token), title: "Dashboard feed"
+    = auto_discovery_link_tag :atom, projects_url(:atom, private_token: current_user.private_token), title: "控制台"
   - if @project && !@project.new_record?
     - if current_controller?(:tree, :commits)
-      = auto_discovery_link_tag(:atom, project_commits_url(@project, @ref, format: :atom, private_token: current_user.private_token), title: "Recent commits to #{@project.name}:#{@ref}")
+      = auto_discovery_link_tag(:atom, project_commits_url(@project, @ref, format: :atom, private_token: current_user.private_token), title: "最新的提交 - #{@project.name}:#{@ref}")
     - if current_controller?(:issues)
-      = auto_discovery_link_tag(:atom, project_issues_url(@project, :atom, private_token: current_user.private_token), title: "#{@project.name} issues")
+      = auto_discovery_link_tag(:atom, project_issues_url(@project, :atom, private_token: current_user.private_token), title: "#{@project.name} 问题反馈")
   = csrf_meta_tags

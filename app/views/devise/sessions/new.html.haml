@@ -9,9 +9,9 @@
       .clearfix.inputs-list
         %label.checkbox.remember_me{:for => "user_remember_me"}
           = f.check_box :remember_me
-          %span Remember me
+          %span 下次自动登陆
     %br/
-    = f.submit "Sign in", :class => "primary btn wide"
+    = f.submit "登录", :class => "primary btn wide"
     .right
       = render :partial => "devise/shared/links"
     .clearfix

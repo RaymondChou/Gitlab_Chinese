@@ -1,24 +1,24 @@
 !!! 5
 %html{ lang: "en"}
-  = render "layouts/head", title: "Admin area"
+  = render "layouts/head", title: "管理员"
   %body{class: "#{app_theme} admin"}
     = render "layouts/flash"
-    = render "layouts/head_panel", title: "Admin area"
+    = render "layouts/head_panel", title: "管理员"
     .container
       %ul.main_menu
         = nav_link(controller: :dashboard, html_options: {class: 'home'}) do
-          = link_to "Stats", admin_root_path
+          = link_to "首页", admin_root_path
         = nav_link(controller: :projects) do
-          = link_to "Projects", admin_projects_path
+          = link_to "项目", admin_projects_path
         = nav_link(controller: :groups) do
-          = link_to "Groups", admin_groups_path
+          = link_to "团队", admin_groups_path
         = nav_link(controller: :users) do
-          = link_to "Users", admin_users_path
+          = link_to "用户", admin_users_path
         = nav_link(controller: :logs) do
-          = link_to "Logs", admin_logs_path
+          = link_to "日志", admin_logs_path
         = nav_link(controller: :hooks) do
-          = link_to "Hooks", admin_hooks_path
+          = link_to "挂钩", admin_hooks_path
         = nav_link(controller: :resque) do
-          = link_to "Resque", admin_resque_path
+          = link_to "后台任务", admin_resque_path
 
       .content= yield

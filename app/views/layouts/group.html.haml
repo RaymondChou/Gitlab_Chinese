@@ -7,18 +7,18 @@
     .container
       %ul.main_menu
         = nav_link(path: 'groups#show', html_options: {class: 'home'}) do
-          = link_to "Home", group_path(@group), title: "Home"
+          = link_to "首页", group_path(@group), title: "首页"
         = nav_link(path: 'groups#issues') do
           = link_to issues_group_path(@group) do
-            Issues
+            问题反馈
             %span.count= current_user.assigned_issues.opened.of_group(@group).count
         = nav_link(path: 'groups#merge_requests') do
           = link_to merge_requests_group_path(@group) do
-            Merge Requests
+            合并请求
             %span.count= current_user.cared_merge_requests.of_group(@group).count
         = nav_link(path: 'groups#search') do
-          = link_to "Search", search_group_path(@group)
+          = link_to "搜索", search_group_path(@group)
         = nav_link(path: 'groups#people') do
-          = link_to "People", people_group_path(@group)
+          = link_to "成员", people_group_path(@group)
 
       .content= yield
